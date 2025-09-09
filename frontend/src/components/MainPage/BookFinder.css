@@ -1,0 +1,255 @@
+/* Book.css */
+
+.book_section {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+/* Sidebar */
+.sideBar {
+  height: 100vh;
+  background: #f8fafc;
+  padding: 30px 15px;
+  border-right: 1px solid #e2e8f0;
+}
+
+.search_div {
+  margin-bottom: 25px;
+  width: 80%;
+}
+
+input[type="text"] {
+  width: 80%;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #3182ce;
+  outline: none;
+  box-shadow: 0 0 5px rgba(49, 130, 206, 0.5);
+}
+
+.filter_div {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.filter_div h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+.filter_div input[type="number"] {
+  width: 90%;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.year_range {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.year_range input {
+  width: 40%;
+}
+
+/* Book Grid */
+.book_side {
+  overflow-y: auto;
+  height: 95vh;
+  padding: 20px;
+  display: grid;
+  grid-gap: 20px;
+}
+
+.each_book {
+  height: 400px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  align-items: center;
+  text-align: center;
+}
+
+.each_book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.book_img {
+  height: 220px;
+  width: 160px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.each_book h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2d3748;
+}
+
+.each_book p {
+  font-size: 14px;
+  color: #4a5568;
+  margin: 5px 0;
+}
+
+.each_book h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #2b6cb0;
+}
+
+.title_div {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+/* loading */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.book-loader {
+  text-align: center;
+}
+
+.book {
+  position: relative;
+  width: 80px;
+  height: 60px;
+  margin: 0 auto 20px;
+  perspective: 120px;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transform-origin: left center;
+  animation: flip 1.2s infinite ease-in-out;
+}
+
+.page:nth-child(1) {
+  animation-delay: 0.4s;
+  z-index: 3;
+}
+
+.page:nth-child(2) {
+  animation-delay: 0.2s;
+  z-index: 2;
+}
+
+.page:nth-child(3) {
+  animation-delay: 0s;
+  z-index: 1;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0deg);
+    background: #fff;
+  }
+  20% {
+    background: #f8f8f8;
+  }
+  50% {
+    transform: rotateY(-180deg);
+    background: #f0f0f0;
+  }
+  80% {
+    background: #f8f8f8;
+  }
+  100% {
+    transform: rotateY(-360deg);
+    background: #fff;
+  }
+}
+
+.book-loader p {
+  font-size: 1.2rem;
+  color: #4a5568;
+  font-weight: 500;
+  margin-top: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.pagination button {
+  background: #3182ce;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pagination button:hover {
+  background: #2b6cb0;
+}
+
+/* Responsive Layout */
+@media only screen and (max-width: 600px) {
+  .book_side {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .book_side {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1040px) {
+  .book_side {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

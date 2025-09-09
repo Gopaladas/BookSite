@@ -1,0 +1,53 @@
+.logo_style {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  margin: 0;
+  top: 10px;
+  left: 5px;
+}
+
+.logo_side {
+  position: relative;
+  left: 50px;
+  top: 13px;
+  display: flex;
+  flex-direction: row;
+}
+
+ul {
+  list-style: none;
+}
+
+.headings_link {
+  text-decoration: none;
+}
+
+.navbar_section {
+  display: flex;
+  justify-content: space-between;
+  background-color: antiquewhite;
+  width: 100vw;
+}
+
+.headings_side {
+  position: relative;
+  right: 100px;
+}
+
+.headings_side ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.headings_side ul li {
+  margin: 0 20px 0 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .hide {
+    display: none;
+  }
+}
