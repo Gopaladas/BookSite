@@ -4,7 +4,8 @@
   position: relative;
   margin: 0;
   top: 10px;
-  left: 5px;
+  left: 0px;
+  border-radius: 50%;
 }
 
 .logo_side {
@@ -53,5 +54,13 @@ ul {
 
   .headings_side {
     right: 0px;
+  }
+
+  .logo_side {
+    left: 5px;
+  }
+
+  .logo_name {
+    display: none;
   }
 }
