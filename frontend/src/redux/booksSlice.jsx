@@ -3,22 +3,33 @@ import axios from "axios";
 
 export const fetchBooks = createAsyncThunk(
   "books/fetchBooks",
-  async (query = "story") => {
-    const res = await axios.get(
-      `https://openlibrary.org/search.json?q=${query}&limit=100`
-    );
-    return res.data.docs.map((book) => ({
-      id: book.key || book?.author_key?.[0] || "",
-      title: book.title || "Unknown Title",
-      author_name: book.author_name
-        ? book.author_name.join(", ")
-        : "Unknown Author",
-      author_data: book.author_name || [],
-      publish_year: book.first_publish_year || "Unknown",
-      cover_img: book.cover_i || null,
-      language: book.language || [],
-      subjects: book.subject || [],
-    }));
+  async (query = "story", { rejectWithValue }) => {
+    try {
+      const res = await axios.get(
+        `https://openlibrary.org/search.json?q=${query}&limit=100`
+      );
+
+      if (!res.data.docs || res.data.docs.length === 0) {
+        return rejectWithValue("No books found");
+      }
+
+      return res.data.docs.map((book) => ({
+        id: book.key || book?.author_key?.[0] || "",
+        title: book.title || "Unknown Title",
+        author_name: book.author_name
+          ? book.author_name.join(", ")
+          : "Unknown Author",
+        author_data: book.author_name || [],
+        publish_year: book.first_publish_year || "Unknown",
+        cover_img: book.cover_i || null,
+        language: book.language || [],
+        subjects: book.subject || [],
+      }));
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to fetch books"
+      );
+    }
   }
 );
 

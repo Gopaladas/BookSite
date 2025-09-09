@@ -25,12 +25,12 @@ const BookFinder = () => {
     if (searchQuery.trim()) {
       dispatch(fetchBooks(searchQuery))
         .unwrap()
-        .then(() => {
-          toast.success(`Results found for "${searchQuery}"`);
+        .then((books) => {
+          toast.success(`Found ${books.length} books for "${searchQuery}"`);
           setCurrentPage(1);
         })
-        .catch(() => {
-          toast.error("Failed to fetch books. Try again!");
+        .catch((error) => {
+          toast.error(error || "Failed to fetch books. Try again!");
         });
     } else {
       toast.info("Please enter a title or author name.");
