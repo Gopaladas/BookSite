@@ -50,4 +50,8 @@ ul {
   .hide {
     display: none;
   }
+
+  .headings_side {
+    right: 0px;
+  }
 }

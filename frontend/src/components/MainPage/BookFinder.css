@@ -240,11 +240,31 @@ input[type="text"]:focus {
   .book_side {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .book_section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sideBar {
+    height: 40vh;
+  }
 }
 
 @media only screen and (min-width: 600px) {
   .book_side {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .book_section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sideBar {
+    height: 40vh;
   }
 }
 
