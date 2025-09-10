@@ -37,7 +37,7 @@ npm install
 
 4. **Run the application**
 
-In two terminals:
+In the one terminal
 ```bash
 cd frontend && npm start
 ``
